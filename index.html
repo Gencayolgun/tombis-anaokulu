@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#F4E3C4">
+<meta name="robots" content="noindex, nofollow">
+<title>Karınca Yuvası — Tombiş</title>
+<link rel="icon" href="gorsel/ik-final.webp">
+<link rel="stylesheet" href="css/tahta.css">
+</head>
+<body>
+<div id="cerceve"><div id="sahne"></div></div>
+
+<script src="js/metinler.js"></script>
+<script src="js/ses-kaynak.js"></script>
+<script src="js/ses.js"></script>
+<script src="js/cizim.js"></script>
+<script src="js/tahta.js"></script>
+<script src="js/yol.js"></script>
+<script src="js/menu.js"></script>
+
+<!-- Etkinlikler: menüdeki sıra bu sıradır (ders akışı) -->
+<script src="js/etkinlik/vucut.js"></script>
+<script src="js/etkinlik/kactane.js"></script>
+<script src="js/etkinlik/ciz.js"></script>
+<script src="js/etkinlik/oruntu.js"></script>
+<script src="js/etkinlik/meslek.js"></script>
+<script src="js/etkinlik/dikis.js"></script>
+<script src="js/etkinlik/yolculuk.js"></script>
+<script src="js/etkinlik/hareket.js"></script>
+<script src="js/etkinlik/flut.js"></script>
+<script src="js/etkinlik/mutfak.js"></script>
+<script src="js/etkinlik/duygu.js"></script>
+<script src="js/etkinlik/masal.js"></script>
+<script src="js/etkinlik/renk.js"></script>
+<script src="js/etkinlik/sagsol.js"></script>
+<script src="js/etkinlik/tasima.js"></script>
+
+<script>
+  T.kur();
+  // Adres sonuna #oyun=kod eklenirse doğrudan o oyun açılır (öğretmen kısayolu)
+  var istek = /oyun=([a-z]+)/.exec(location.hash);
+  if (istek) T.oyna(istek[1]); else T.girisAc();
+</script>
+</body>
+</html>

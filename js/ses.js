@@ -13,8 +13,17 @@ window.Ses = (function () {
   var oynayan = null;
   var dinleyiciler = [];
   var yerelHata = {}, uzakHata = {};
-  var ardArdaYerel = 0, ardArdaUzak = 0;
   var trSes = null;
+
+  /* Bütün satırlar TEK bir ses öğesinden çalınır. Tablet ve telefonlarda
+     (özellikle iPad/iPhone) tarayıcı yalnız bir dokunuşla "açılmış" öğenin
+     çalmasına izin verir; her satır için yeni öğe açmak Tombiş'in arada
+     bir susmasına yol açıyordu. */
+  var oyuncu = new Audio();
+  oyuncu.preload = 'auto';
+  var kilitAcik = false;
+  var kilitDeneme = 0;          // sessiz kilit açma çalışının kimliği
+  var izinBekleyen = null;      // izin yüzünden çalamayan satır: ilk dokunuşta yeniden
 
   function oku() { try { return localStorage.getItem('tombis.karinca.ses'); } catch (e) { return null; } }
   function yaz(d) { try { localStorage.setItem('tombis.karinca.ses', d); } catch (e) {} }
@@ -37,9 +46,9 @@ window.Ses = (function () {
 
   function adresler(k) {
     var l = [];
-    if (!yerelHata[k] && ardArdaYerel < 3) l.push({ tur: 'yerel', src: 'ses/' + k + '.mp3' });
+    if (!yerelHata[k]) l.push({ tur: 'yerel', src: 'ses/' + k + '.mp3' });
     var K = window.SES_KAYNAK;
-    if (K && K.dosya[k] && !uzakHata[k] && ardArdaUzak < 3 && navigator.onLine !== false) {
+    if (K && K.dosya[k] && !uzakHata[k] && navigator.onLine !== false) {
       l.push({ tur: 'uzak', src: K.kok + K.dosya[k] + '.mp3' });
     }
     return l;
@@ -51,23 +60,40 @@ window.Ses = (function () {
     }
   }
 
-  /* Tek bir kaynağı dener. Çalmaya başlayamazsa reddeder, bitince çözer. */
+  function temizle() {
+    oyuncu.onplaying = oyuncu.onended = oyuncu.onerror = null;
+  }
+
+  /* Tek bir kaynağı dener. Çalmaya başlayamazsa reddeder, bitince çözer.
+     Yavaş internette dosyanın gelmesi birkaç saniye sürebilir; bu yüzden
+     bekleme cömert ve "geç geldi" bir dosyayı kalıcı olarak bozuk saymaz. */
   function dene(kaynak, is) {
     return new Promise(function (coz, reddet) {
-      var a = new Audio();
       var basladi = false, bitti = false;
-      function son(f, v) { if (bitti) return; bitti = true; clearTimeout(bekci); f(v); }
-      var bekci = setTimeout(function () { if (!basladi) { a.pause(); son(reddet, 'zaman'); } }, kaynak.tur === 'uzak' ? 4500 : 2500);
-      a.preload = 'auto';
-      a.defaultPlaybackRate = HIZ;
-      a.playbackRate = HIZ;
-      a.addEventListener('playing', function () { basladi = true; });
-      a.addEventListener('ended', function () { son(coz); });
-      a.addEventListener('error', function () { if (!basladi) son(reddet, 'hata'); else son(coz); });
-      is.iptal = function () { a.pause(); son(coz); };
-      a.src = kaynak.src;
-      var p = a.play();
-      if (p && p.catch) p.catch(function () { if (!basladi) son(reddet, 'izin'); });
+      function son(f, v) {
+        if (bitti) return;
+        bitti = true;
+        clearTimeout(bekci);
+        if (is.aktifDeneme === son) { temizle(); is.aktifDeneme = null; }
+        f(v);
+      }
+      is.aktifDeneme = son;
+      var bekci = setTimeout(function () { if (!basladi) { oyuncu.pause(); son(reddet, 'zaman'); } }, 7000);
+      oyuncu.onplaying = function () { basladi = true; };
+      oyuncu.onended = function () { son(coz); };
+      oyuncu.onerror = function () { if (!basladi) son(reddet, 'hata'); else son(coz); };
+      is.iptal = function () { oyuncu.pause(); son(coz); };
+      kilitDeneme++;                  // yarım kalmış sessiz çalış bu satırı durdurmasın
+      oyuncu.muted = false;
+      oyuncu.src = kaynak.src;
+      oyuncu.defaultPlaybackRate = HIZ;
+      oyuncu.playbackRate = HIZ;
+      var p;
+      try { p = oyuncu.play(); } catch (e) { son(reddet, 'izin'); return; }
+      if (p && p.then) {
+        p.then(function () { basladi = true; kilitAcik = true; },
+               function (e) { if (!basladi) son(reddet, e && e.name === 'NotAllowedError' ? 'izin' : 'hata'); });
+      }
     });
   }
 
@@ -97,7 +123,32 @@ window.Ses = (function () {
     });
   }
 
+  /* Tarayıcı izin vermediği için susan satır: altyazı süresince bekler;
+     o arada bir dokunuş gelirse satır baştan, sesli söylenir (bkz. kilidiAc). */
+  function izinBekle(k, is) {
+    return new Promise(function (coz) {
+      var id = setTimeout(bitir, tahminiSure(k));
+      function bitir() { clearTimeout(id); if (izinBekleyen && izinBekleyen.is === is) izinBekleyen = null; coz(); }
+      is.iptal = bitir;
+      izinBekleyen = {
+        is: is,
+        calistir: function () {
+          clearTimeout(id);
+          izinBekleyen = null;
+          var K = window.SES_KAYNAK;
+          dene({ tur: 'yerel', src: 'ses/' + k + '.mp3' }, is)
+            .catch(function () {
+              if (oynayan !== is || !K || !K.dosya[k]) throw 'yok';
+              return dene({ tur: 'uzak', src: K.kok + K.dosya[k] + '.mp3' }, is);
+            })
+            .then(coz, coz);
+        }
+      };
+    });
+  }
+
   function dur() {
+    izinBekleyen = null;
     if (oynayan) { var o = oynayan; oynayan = null; o.iptal(); }
   }
 
@@ -112,23 +163,26 @@ window.Ses = (function () {
     if (!acik) {
       zincir = sadeceBekle(k, is);
     } else {
+      var izinYok = false;
       var liste = adresler(k);
       zincir = liste.reduce(function (onceki, kaynak) {
-        return onceki.catch(function () {
+        return onceki.catch(function (neden) {
           if (oynayan !== is) return;
-          return dene(kaynak, is).then(function () {
-            if (kaynak.tur === 'yerel') ardArdaYerel = 0; else ardArdaUzak = 0;
-          }, function (neden) {
-            // Tarayıcı izin vermediyse kaynak suçlu değil, işaretleme
-            if (neden !== 'izin') {
-              if (kaynak.tur === 'yerel') { yerelHata[k] = true; ardArdaYerel++; }
-              else { uzakHata[k] = true; ardArdaUzak++; }
+          // Tarayıcı izin vermediyse öbür kaynaklar da çalamaz
+          if (neden === 'izin') throw neden;
+          return dene(kaynak, is).catch(function (neden) {
+            // Yalnız gerçekten açılamayan dosya bozuk sayılır; gecikme ya da
+            // izin sorunu dosyanın suçu değil, bir dahaki sefere yine denenir
+            if (neden === 'hata') {
+              if (kaynak.tur === 'yerel') yerelHata[k] = true; else uzakHata[k] = true;
             }
+            if (neden === 'izin') izinYok = true;
             throw neden;
           });
         });
       }, Promise.reject('baslangic')).catch(function () {
         if (oynayan !== is) return;
+        if (izinYok) return izinBekle(k, is);
         if (trSes && window.speechSynthesis) return tarayicidanOku(k, is);
         return sadeceBekle(k, is);
       });
@@ -138,16 +192,37 @@ window.Ses = (function () {
     });
   }
 
-  /* Etkinlik açılırken satırları önceden ısıtır (uzak kaynak önbelleğe girer). */
-  function hazirla(anahtarlar) {
+  /* İlk dokunuşta ses öğesinin kilidini açar. Tahtalarda dokunuşun
+     "pointerdown" anı tarayıcıya göre henüz izin sayılmaz; izin ancak
+     parmak kalkınca gelir. O arada susmuş bir satır varsa baştan söylenir. */
+  function kilidiAc() {
     if (!acik) return;
+    if (izinBekleyen && izinBekleyen.is === oynayan) { izinBekleyen.calistir(); return; }
+    if (kilitAcik || oynayan) return;
+    // Boştayken sessizce bir kez çal-durdur: öğe artık serbest
+    var ben = ++kilitDeneme;
+    function bitir() { if (ben === kilitDeneme) { oyuncu.pause(); oyuncu.muted = false; } }
+    try {
+      oyuncu.muted = true;
+      oyuncu.src = 'ses/bitti.mp3';
+      var p = oyuncu.play();
+      if (p && p.then) p.then(function () { kilitAcik = true; bitir(); }, bitir); else bitir();
+    } catch (e) { bitir(); }
+  }
+  ['pointerup', 'touchend', 'click', 'keydown'].forEach(function (t) {
+    document.addEventListener(t, kilidiAc, true);
+  });
+
+  /* Etkinlik açılırken satırları önceden indirir; sıra gelince beklemeden çalar. */
+  function hazirla(anahtarlar) {
+    if (!acik || !window.fetch || location.protocol === 'file:') return;
     var K = window.SES_KAYNAK;
-    if (!K || navigator.onLine === false) return;
     anahtarlar.forEach(function (k) {
-      if (!K.dosya[k]) return;
-      var a = new Audio();
-      a.preload = 'auto';
-      a.src = K.kok + K.dosya[k] + '.mp3';
+      fetch('ses/' + k + '.mp3').catch(function () {
+        if (K && K.dosya[k] && navigator.onLine !== false) {
+          fetch(K.kok + K.dosya[k] + '.mp3', { mode: 'no-cors' }).catch(function () {});
+        }
+      });
     });
   }
 

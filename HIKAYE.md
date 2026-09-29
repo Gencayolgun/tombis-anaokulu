@@ -83,15 +83,46 @@ ne yapacak?
 | Rozet, şarkı ve dans, merak kancası | 3 dk |
 | **Toplam** | **30–35 dk** |
 
-### 2. hafta — Tombiş'e Ziyaret
+### 2. hafta — Tombiş'e Ziyaret (hazır)
 
-Kapıdaki Kökçe ile Pırıltı'dır, yanlarında karıncalar. Tombiş'e birer
-hediye getirmişlerdir, ama pasta bir tane, misafir çok. Pastayı paylaşmak
-mı, kendine saklamak mı? Tombiş'in tek bir oyuncağı var, iki arkadaş
-aynı anda istiyor: sırayla mı oynasınlar, birlikte bir oyun mu
-kursunlar? Paylaşınca oyunun daha eğlenceli olduğu görülür. Kapanışta
-Kökçe hediye olarak Tombiş'e küçük bir tohum verir: "Bunu ek, ama
-sabırlı ol!"
+Kapı çalar: Kökçe, Pırıltı ve karıncalar hediyelerle gelir. Tek pasta,
+tek top, çok misafir. Tombiş ne yapacak?
+
+- **Kapı:** vuruşlar sayılır (1–3). Penceredeki üç gölgeden Kökçe'ninki
+  bulunur (gölge eşleme).
+- **Seçim 1:** Kapıyı hemen mi açalım, önce "Kim o?" mu diyelim? (Hemen
+  açılırsa Karışkan "böö" der; sorulursa arkadaşlar cevap verir.)
+- **Seçim 2:** Pastayı herkesle paylaşsın mı, kendine mi saklasın?
+  - Paylaşırsa: herkese bir dilim (bire bir eşleme, 6'ya kadar sayma).
+  - Saklarsa: tek başına yer, arkadaşlar susar. Sohbet: "Arkadaşları nasıl
+    hissediyor, Tombiş mutlu mu?" Sonra: özür dileyip paylaşsın mı, tek
+    başına mı yesin? Tek başına yerse arkadaşlar gider, Tombiş yalnız
+    kalır ve onları geri çağırır (hep birlikte "Arkadaşlar!"). Sonunda
+    her yol paylaşmaya çıkar.
+- **Seçim 3:** Bir top, üç arkadaş: sırayla mı, birlikte bir oyun mu?
+  - Sırayla: "sıra kimde?" (örüntü: Pırıltı, Kökçe, Tombiş...), hareket
+    molası (sırayla zıplama).
+  - Birlikte: pas oyunu, 6 pas sayılır; hareket molası (hayali top).
+- **Eksik oyuncak:** raftaki 5 oyuncaktan Karışkan birini kaçırır, hangisi
+  eksik? (dikkat, hafıza)
+- **Seçim 4:** Teşekkür için resim mi, şarkı mı?
+  - Resim: renk örüntüsünü tamamla (kırmızı, sarı, kırmızı, sarı, ?, ?).
+  - Şarkı: Paylaşma şarkısıyla dans.
+- **Kapanış:** Kökçe bir tohum verir ("sabırlı ol"). Sohbet: "Siz bugün ne
+  paylaştınız?", Paylaşma Yıldızı rozeti, şarkı.
+- **Merak kancası:** Tohumdan ne çıkacak? Gelecek hafta...
+
+| Bölüm | Yaklaşık süre |
+|---|---|
+| Açılış, geçen haftayı hatırlama | 2 dk |
+| Kapı: vuruş sayma, gölge bulma, 1. seçim | 5 dk |
+| Misafirler, hediyeler, 2. seçim | 3 dk |
+| Pasta: paylaşma ya da saklama yolu (sohbetli) | 5–8 dk |
+| Bahçede top: 3. seçim, oyun, hareket molası | 6 dk |
+| Eksik oyuncak | 3 dk |
+| Teşekkür: örüntü ya da şarkı | 3 dk |
+| Kapanış sohbeti, rozet, şarkı, merak kancası | 5 dk |
+| **Toplam** | **30–35 dk** |
 
 ### 3. hafta — Kökçe'nin Tohumu
 

@@ -774,3 +774,24 @@ img { -webkit-user-drag: none; user-select: none; }
 .h-gecis-dugme { position: absolute; right: 60px; top: 140px; border: 0; cursor: pointer; font: inherit; font-size: 40px; font-weight: 900;
   color: #fff; background: var(--mercan); border-radius: 40px; padding: 18px 44px; box-shadow: 0 10px 0 #C8412A, 0 18px 36px rgba(90, 58, 38, .25); z-index: 41; }
 .h-gecis-dugme:active { transform: translateY(4px); }
+
+/* ——— 2. hafta ——— */
+.h-tak { position: absolute; transform: translate(-50%, -50%); background: #fff; color: var(--kahve); font-size: 54px; font-weight: 900;
+  padding: 14px 34px; border-radius: 40px; box-shadow: var(--golge); animation: hGir .3s cubic-bezier(.3, 1.6, .5, 1) both; z-index: 40; }
+.h-tak.git { opacity: 0; transition: opacity .3s; }
+.h-golge img { filter: brightness(0); opacity: .82; transition: filter .5s, opacity .5s; }
+.h-raf { position: absolute; left: 960px; top: 520px; transform: translate(-50%, -50%); width: 1160px; height: 34px; border-radius: 12px;
+  background: #C9955A; box-shadow: 0 12px 0 #A6733D, var(--golge); z-index: 5; }
+.h-oge.gizli { animation: none; opacity: 0; transition: opacity .6s; pointer-events: none; }
+.h-kagit { position: absolute; left: 1150px; top: 520px; transform: translate(-50%, -50%) rotate(-2deg); width: 940px; padding: 40px 30px;
+  background: #FFFDF6; border-radius: 26px; box-shadow: var(--golge); display: flex; justify-content: space-around; z-index: 40;
+  animation: hGir .5s cubic-bezier(.3, 1.6, .5, 1) both; }
+.h-kagit.git { opacity: 0; transition: opacity .35s; }
+.h-kagit .cicek { width: 130px; height: 150px; }
+.h-kagit .cicek svg { width: 100%; height: 100%; }
+.h-kagit .cicek .tac { stroke: #CDBFA8; stroke-width: 3; stroke-dasharray: 8 6; }
+.h-kagit .cicek.boyali .tac { stroke: #5A3A26; stroke-dasharray: none; }
+.h-palet { position: absolute; left: 1150px; top: 840px; transform: translate(-50%, -50%); display: flex; gap: 50px; z-index: 41; }
+.h-palet .renk { width: 150px; height: 150px; border-radius: 50%; border: 10px solid #fff; box-shadow: var(--golge); cursor: pointer; padding: 0; }
+.h-palet .renk:active { transform: scale(.94); }
+.h-palet .renk.parla { animation: kartParla 1.1s ease-in-out infinite; }

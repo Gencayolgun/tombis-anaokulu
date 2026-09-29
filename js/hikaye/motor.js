@@ -21,13 +21,19 @@ window.Hikaye = (function () {
     tombis: {
       selam: 'gorsel/tombis-selam.webp', sevinc: 'gorsel/tombis-sevinc.webp', dusun: 'gorsel/tombis-dusun.webp',
       yuru: 'hikaye/gorsel/t-yuru.webp', dus: 'hikaye/gorsel/t-dus.webp', agla: 'hikaye/gorsel/t-agla.webp',
-      sarili: 'hikaye/gorsel/t-sarili.webp', topal: 'hikaye/gorsel/t-topal.webp', kizak: 'hikaye/gorsel/t-kizak.webp'
+      sarili: 'hikaye/gorsel/t-sarili.webp', topal: 'hikaye/gorsel/t-topal.webp', kizak: 'hikaye/gorsel/t-kizak.webp',
+      pasta: 'hikaye/gorsel/t-pasta.webp', saskin: 'hikaye/gorsel/t-saskin.webp', yalniz: 'hikaye/gorsel/t-yalniz.webp',
+      top: 'hikaye/gorsel/t-top.webp', boya: 'hikaye/gorsel/t-boya.webp', tohum: 'hikaye/gorsel/t-tohum.webp'
     },
     kokce: {
       selam: 'hikaye/gorsel/k-selam.webp', kos: 'hikaye/gorsel/k-kos.webp', yardim: 'hikaye/gorsel/k-yardim.webp',
-      uzgun: 'hikaye/gorsel/k-uzgun.webp', ozur: 'hikaye/gorsel/k-ozur.webp', sevinc: 'hikaye/gorsel/k-sevinc.webp'
+      uzgun: 'hikaye/gorsel/k-uzgun.webp', ozur: 'hikaye/gorsel/k-ozur.webp', sevinc: 'hikaye/gorsel/k-sevinc.webp',
+      pasta: 'hikaye/gorsel/k-pasta.webp', tohum: 'hikaye/gorsel/k-tohum.webp', top: 'hikaye/gorsel/k-top.webp'
     },
-    pirilti: { uc: 'hikaye/gorsel/p-uc.webp', saril: 'hikaye/gorsel/p-saril.webp' },
+    pirilti: {
+      uc: 'hikaye/gorsel/p-uc.webp', saril: 'hikaye/gorsel/p-saril.webp',
+      top: 'hikaye/gorsel/p-top.webp', uzgun: 'hikaye/gorsel/p-uzgun.webp', sevinc: 'hikaye/gorsel/p-sevinc.webp'
+    },
     kariskan: { ufle: 'gorsel/kariskan-ufle.webp', uzgun: 'gorsel/kariskan-uzgun.webp', it: 'gorsel/kariskan-it.webp' }
   };
 
@@ -566,10 +572,14 @@ window.Hikaye = (function () {
       });
     }
 
-    /* Rozet: kocaman kalp */
-    function rozet(ad, k) {
+    /* Rozet: kocaman kalp (ya da yıldız) */
+    var ROZET = {
+      kalp: '<svg viewBox="0 0 200 180"><path d="M100 170C40 125 8 92 8 55 8 25 32 6 58 6c18 0 33 9 42 24C109 15 124 6 142 6c26 0 50 19 50 49 0 37-32 70-92 115z" fill="#FC5F42" stroke="#fff" stroke-width="10"/><path d="M52 48c6-14 20-20 32-16" stroke="#FFD0C4" stroke-width="10" stroke-linecap="round" fill="none"/></svg>',
+      yildiz: '<svg viewBox="0 0 200 190"><path d="M100 8l27 58 63 7-47 43 13 63-56-32-56 32 13-63L10 73l63-7z" fill="#FFC940" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><circle cx="82" cy="88" r="7" fill="#5A3A26"/><circle cx="118" cy="88" r="7" fill="#5A3A26"/><path d="M84 110q16 14 32 0" stroke="#5A3A26" stroke-width="6" stroke-linecap="round" fill="none"/></svg>'
+    };
+    function rozet(ad, k, sekil) {
       var p = el('div', 'h-rozet', ui);
-      p.innerHTML = '<svg viewBox="0 0 200 180"><path d="M100 170C40 125 8 92 8 55 8 25 32 6 58 6c18 0 33 9 42 24C109 15 124 6 142 6c26 0 50 19 50 49 0 37-32 70-92 115z" fill="#FC5F42" stroke="#fff" stroke-width="10"/><path d="M52 48c6-14 20-20 32-16" stroke="#FFD0C4" stroke-width="10" stroke-linecap="round" fill="none"/></svg>';
+      p.innerHTML = ROZET[sekil] || ROZET.kalp;
       el('b', null, p, ad);
       Efekt.kutlama();
       api.kutla(960, 420, 70);

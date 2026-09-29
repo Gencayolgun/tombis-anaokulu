@@ -32,15 +32,10 @@
       T.rehberGoster(false);
       var a = api.alan;
 
-      var baslik = T.el('div', 'baslik-yazi', a, 'Karınca Yuvası');
-      baslik.style.left = '960px';
-      baslik.style.top = '250px';
-      baslik.style.fontSize = '150px';
       var alt = T.el('div', 'baslik-yazi', a, 'Tombiş ile Çemberbahçe\'de');
       alt.style.left = '960px';
-      alt.style.top = '380px';
-      alt.style.fontSize = '58px';
-      alt.style.webkitTextStroke = '2px #C8412A';
+      alt.style.top = '300px';
+      alt.style.fontSize = '96px';
 
       var tombis = api.sprite('gorsel/tombis-selam.webp', 470, 770, 360);
       var karincalar = [

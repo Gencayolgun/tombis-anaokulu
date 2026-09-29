@@ -163,6 +163,7 @@ window.Cizim = (function () {
   /* ——— Öğretmen ve düğme ikonları ——— */
   var IKON = {
     ev: '<path d="M4 11.5 12 4l8 7.5M6.5 10v9.5h4v-5h3v5h4V10"/>',
+    kitap: '<path d="M12 6.5c-1.6-1.4-3.8-2-6.5-2v13c2.7 0 4.9.6 6.5 2 1.6-1.4 3.8-2 6.5-2v-13c-2.7 0-4.9.6-6.5 2z"/><path d="M12 6.5v13"/>',
     yeniden: '<path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.5 4.5v4.8h-4.8"/>',
     ses: '<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.6 7.6 0 0 1 0 11"/>',
     sessiz: '<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="m16 9.5 5 5m0-5-5 5"/>',

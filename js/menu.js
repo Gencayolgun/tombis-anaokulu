@@ -63,13 +63,24 @@
       onYukle().then(function () {
         if (!api.canli()) return;
         hazirlaniyor.remove();
-        var basla = api.dugme({ x: 960, y: 780, ikon: 'oynat', etiket: 'Başla', fn: function () {
+        var hikayeler = null;
+        var basla = api.dugme({ x: window.Hikaye ? 840 : 960, y: 780, ikon: 'oynat', etiket: 'Başla', fn: function () {
           basla.remove();
+          if (hikayeler) hikayeler.remove();
           Efekt.ac();
           if (!(document.fullscreenElement || document.webkitFullscreenElement)) T.tamEkran();
           hikaye();
         } });
         basla.classList.add('sek');
+        // Haftalık seçmeli çizgi filmler, doğrudan giriş sayfasından
+        if (window.Hikaye) {
+          hikayeler = api.dugme({ x: 1100, y: 780, ikon: 'kitap', sinif: 'mavi', etiket: 'Hikâyeler', fn: function () {
+            Efekt.ac();
+            Efekt.pop();
+            if (!(document.fullscreenElement || document.webkitFullscreenElement)) T.tamEkran();
+            Hikaye.menuAc();
+          } });
+        }
       });
 
       function hikaye() {

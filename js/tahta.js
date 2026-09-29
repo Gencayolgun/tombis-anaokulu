@@ -529,7 +529,8 @@ window.T = (function () {
       dugmeler[ad] = b;
       return b;
     }
-    ikonDugme('ev', 'ev', 'Oyunlar', function () { menu(); });
+    // Ev: giriş ekranına (Başla ve Hikâyeler) döner
+    ikonDugme('ev', 'ev', 'Giriş', function () { if (T.girisAc) T.girisAc(); else menu(); });
     ikonDugme('yeniden', 'yeniden', 'Baştan başlat', function () { if (aktif && aktif.tanim && aktif.tanim.kod) T.oyna(aktif.tanim.kod); });
     ikonDugme('ses', Ses.acik() ? 'ses' : 'sessiz', 'Ses', function () {
       Ses.ac(!Ses.acik());

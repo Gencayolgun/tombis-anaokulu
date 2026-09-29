@@ -160,6 +160,13 @@
         T.menuAc();
       });
 
+      // Haftalık seçmeli çizgi filmler
+      if (window.Hikaye) {
+        var hk = T.el('button', 'h-gecis-dugme', a, 'Hikâyeler');
+        hk.type = 'button';
+        api.dokun(hk, function () { Efekt.pop(); Hikaye.menuAc(); });
+      }
+
       api.talimat('menu');
     }, null);
   };

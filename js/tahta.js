@@ -530,7 +530,7 @@ window.T = (function () {
       return b;
     }
     ikonDugme('ev', 'ev', 'Oyunlar', function () { menu(); });
-    ikonDugme('yeniden', 'yeniden', 'Baştan başlat', function () { if (aktif && aktif.tanim && aktif.tanim.kod) oyna(aktif.tanim.kod); });
+    ikonDugme('yeniden', 'yeniden', 'Baştan başlat', function () { if (aktif && aktif.tanim && aktif.tanim.kod) T.oyna(aktif.tanim.kod); });
     ikonDugme('ses', Ses.acik() ? 'ses' : 'sessiz', 'Ses', function () {
       Ses.ac(!Ses.acik());
       dugmeler.ses.innerHTML = '';

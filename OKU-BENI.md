@@ -68,6 +68,16 @@ adresi güncelle.
 
 ---
 
+## Tombiş'in Hikâyeleri (seçmeli çizgi film)
+
+Menüdeki **Hikâyeler** düğmesi 6 haftalık bir çizgi film dizisini açar
+(kısayol `#hikaye=1`). Hikâye önemli anlarda durur, sınıf iki resimden
+birini seçer ve hikâye o yönde değişir. Her bölüm bir değer öğretir ve
+30–35 dakikalık bir dersi doldurur. Plan, öğretmen notları ve yeni hafta
+ekleme: [HIKAYE.md](HIKAYE.md).
+
+---
+
 ## Etkinlikler
 
 Menüdeki sıra ders akışını izliyor.

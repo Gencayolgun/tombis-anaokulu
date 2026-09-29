@@ -15,7 +15,7 @@
 window.Hikaye = (function () {
   var G = 1920, Y = 1080;
   var haftalar = [];
-  var KISI = { t: 'tombis', k: 'kokce', p: 'pirilti' };
+  var KISI = { t: 'tombis', k: 'kokce', p: 'pirilti', c: 'cingoz' };
 
   var POZ = {
     tombis: {
@@ -23,16 +23,24 @@ window.Hikaye = (function () {
       yuru: 'hikaye/gorsel/t-yuru.webp', dus: 'hikaye/gorsel/t-dus.webp', agla: 'hikaye/gorsel/t-agla.webp',
       sarili: 'hikaye/gorsel/t-sarili.webp', topal: 'hikaye/gorsel/t-topal.webp', kizak: 'hikaye/gorsel/t-kizak.webp',
       pasta: 'hikaye/gorsel/t-pasta.webp', saskin: 'hikaye/gorsel/t-saskin.webp', yalniz: 'hikaye/gorsel/t-yalniz.webp',
-      top: 'hikaye/gorsel/t-top.webp', boya: 'hikaye/gorsel/t-boya.webp', tohum: 'hikaye/gorsel/t-tohum.webp'
+      top: 'hikaye/gorsel/t-top.webp', boya: 'hikaye/gorsel/t-boya.webp', tohum: 'hikaye/gorsel/t-tohum.webp',
+      kaz: 'hikaye/gorsel/t-kaz.webp', sula: 'hikaye/gorsel/t-sula.webp', bekle: 'hikaye/gorsel/t-bekle.webp',
+      salincak: 'hikaye/gorsel/t-salincak.webp', cicek: 'hikaye/gorsel/t-cicek.webp', uza: 'hikaye/gorsel/t-uza.webp'
     },
     kokce: {
       selam: 'hikaye/gorsel/k-selam.webp', kos: 'hikaye/gorsel/k-kos.webp', yardim: 'hikaye/gorsel/k-yardim.webp',
       uzgun: 'hikaye/gorsel/k-uzgun.webp', ozur: 'hikaye/gorsel/k-ozur.webp', sevinc: 'hikaye/gorsel/k-sevinc.webp',
-      pasta: 'hikaye/gorsel/k-pasta.webp', tohum: 'hikaye/gorsel/k-tohum.webp', top: 'hikaye/gorsel/k-top.webp'
+      pasta: 'hikaye/gorsel/k-pasta.webp', tohum: 'hikaye/gorsel/k-tohum.webp', top: 'hikaye/gorsel/k-top.webp',
+      kurek: 'hikaye/gorsel/k-kurek.webp', anlat: 'hikaye/gorsel/k-anlat.webp', sula: 'hikaye/gorsel/k-sula.webp',
+      bekle: 'hikaye/gorsel/k-bekle.webp', saskin: 'hikaye/gorsel/k-saskin.webp', cicek: 'hikaye/gorsel/k-cicek.webp'
     },
     pirilti: {
       uc: 'hikaye/gorsel/p-uc.webp', saril: 'hikaye/gorsel/p-saril.webp',
       top: 'hikaye/gorsel/p-top.webp', uzgun: 'hikaye/gorsel/p-uzgun.webp', sevinc: 'hikaye/gorsel/p-sevinc.webp'
+    },
+    cingoz: {
+      uc: 'hikaye/gorsel/c-uc.webp', selam: 'hikaye/gorsel/c-selam.webp', saskin: 'hikaye/gorsel/c-saskin.webp',
+      git: 'hikaye/gorsel/c-git.webp', sevinc: 'hikaye/gorsel/c-sevinc.webp', bak: 'hikaye/gorsel/c-bak.webp'
     },
     kariskan: { ufle: 'gorsel/kariskan-ufle.webp', uzgun: 'gorsel/kariskan-uzgun.webp', it: 'gorsel/kariskan-it.webp' }
   };
@@ -575,6 +583,7 @@ window.Hikaye = (function () {
     /* Rozet: kocaman kalp (ya da yıldız) */
     var ROZET = {
       kalp: '<svg viewBox="0 0 200 180"><path d="M100 170C40 125 8 92 8 55 8 25 32 6 58 6c18 0 33 9 42 24C109 15 124 6 142 6c26 0 50 19 50 49 0 37-32 70-92 115z" fill="#FC5F42" stroke="#fff" stroke-width="10"/><path d="M52 48c6-14 20-20 32-16" stroke="#FFD0C4" stroke-width="10" stroke-linecap="round" fill="none"/></svg>',
+      tohum: '<svg viewBox="0 0 200 200"><path d="M100 60c18-4 36 6 40 24" stroke="#57B26B" stroke-width="12" stroke-linecap="round" fill="none"/><path d="M100 96V52" stroke="#57B26B" stroke-width="12" stroke-linecap="round"/><path d="M100 52c-4-26-24-40-50-38 2 26 22 42 50 38z" fill="#7BCB6A" stroke="#fff" stroke-width="7"/><path d="M100 52c4-26 24-40 50-38-2 26-22 42-50 38z" fill="#7BCB6A" stroke="#fff" stroke-width="7"/><ellipse cx="100" cy="140" rx="74" ry="54" fill="#A67C52" stroke="#fff" stroke-width="10"/><path d="M100 96v88" stroke="#8C6239" stroke-width="7" stroke-linecap="round"/><circle cx="76" cy="132" r="7" fill="#5A3A26"/><circle cx="124" cy="132" r="7" fill="#5A3A26"/><path d="M84 152q16 14 32 0" stroke="#5A3A26" stroke-width="6" stroke-linecap="round" fill="none"/></svg>',
       yildiz: '<svg viewBox="0 0 200 190"><path d="M100 8l27 58 63 7-47 43 13 63-56-32-56 32 13-63L10 73l63-7z" fill="#FFC940" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><circle cx="82" cy="88" r="7" fill="#5A3A26"/><circle cx="118" cy="88" r="7" fill="#5A3A26"/><path d="M84 110q16 14 32 0" stroke="#5A3A26" stroke-width="6" stroke-linecap="round" fill="none"/></svg>'
     };
     function rozet(ad, k, sekil) {

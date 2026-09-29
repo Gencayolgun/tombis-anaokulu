@@ -124,14 +124,49 @@ tek top, çok misafir. Tombiş ne yapacak?
 | Kapanış sohbeti, rozet, şarkı, merak kancası | 5 dk |
 | **Toplam** | **30–35 dk** |
 
-### 3. hafta — Kökçe'nin Tohumu
+### 3. hafta — Kökçe'nin Tohumu (hazır)
 
-Tombiş'in dizi iyileşmiştir. Tohumu eker ve hemen çiçek açsın ister.
-Kökçe "Kök bazen geri dönerek de ilerler" der. Her gün sulamak mı,
-bir kerede bütün suyu dökmek mi? Tohumun kazılıp kontrol edilmesi mi,
-beklenmesi mi? Aynı bölümde parkta salıncak sırası: öne geçmek mi,
-sırasını beklemek mi? Sonunda çiçek açar, Cingöz görür ve heyecanla
-Krista'ya göstermeye koşar...
+Tombiş'in dizi iyileşmiştir. Kökçe'nin verdiği tohumu eker ve hemen
+çiçek açsın ister. Sabır ve sıra beklemek üzerine bir bölüm.
+
+- **Seçim 1:** Tohum güneşli yere mi, ağacın gölgesine mi ekilsin?
+  (Gölgeye giderse Kökçe düzeltir, güneşli yere taşınır.)
+- **Ekme sırası:** kürek, tohum, su; sırayla dokunulur (1–3).
+- **Seçim 2:** Her gün birazcık mı sulayalım, bütün suyu şimdi mi dökelim?
+  - Bütün su: toprak göle döner, tohum yüzer. Sohbet: "Neden acele
+    etmemeliyiz?" Sonra her gün sulamaya dönülür.
+  - Her gün: sulama kabına her dokunuş bir gün, günler sayılır (1–3),
+    güneş gökyüzünden geçer.
+- **Seçim 3:** Üç gün sonra kazıp bakalım mı, bekleyelim mi?
+  - Kazarsa: minicik kök görünür, rahatsız olur; toprağa üç kez dokunarak
+    yeniden örtülür.
+  - Beklerse: hareket molası, "sabır dansı" (kök gibi uzama).
+- **Park:** salıncakta bekleyenler sayılır (1–4).
+- **Seçim 4:** Tombiş sıranın önüne mi geçsin, sıraya mı girsin?
+  (Öne geçerse Pırıltı kızar, Tombiş özür dileyip sona geçer.) Sonra
+  "sıra kimde?" oyunu: sırası gelene dokunulur, salıncağa biner (1–5);
+  hareket molası (sallanma).
+- **Bahçeye dönüş:** filiz çıkmıştır; 4–7. günler sayılır, 5. günde
+  fidan, 7. günde çiçek. Küçükten büyüğe sıralama: tohum, filiz, fidan,
+  çiçek.
+- **Seçim 5:** Çiçeği koparıp Kökçe'ye mi verelim, bahçede mi bırakalım?
+  (Koparırsa Kökçe solacağını anlatır, çiçek yerine döner.)
+- **Cingöz gelir:** çiçeği görür, "yedi saniye bile bekleyemem" der ve
+  Krista'ya göstermeye uçar.
+- **Kapanış:** Sohbet: "Siz neyi beklerken zorlanıyorsunuz?", Sabır
+  Tohumu rozeti, Sabır şarkısı.
+- **Merak kancası:** Cingöz koşarken bir şeye çarpar mı? Gelecek hafta...
+
+| Bölüm | Yaklaşık süre |
+|---|---|
+| Açılış, dizi iyileşti, 1. seçim | 4 dk |
+| Ekme sırası, 2. seçim (sulama yolu, sohbetli) | 5–8 dk |
+| Günleri sayma, 3. seçim (kazma ya da sabır dansı) | 5 dk |
+| Park: sayma, 4. seçim, salıncak sırası, hareket molası | 7 dk |
+| Filiz ve çiçek: günler 4–7, sıralama | 4 dk |
+| 5. seçim, Cingöz | 3 dk |
+| Kapanış sohbeti, rozet, şarkı, merak kancası | 5 dk |
+| **Toplam** | **30–35 dk** |
 
 ### 4. hafta — Kırılan Kristal
 
@@ -169,7 +204,7 @@ Her hafta üç dosya:
   konuşanı söyler: `t_` Tombiş, `k_` Kökçe, `p_` Pırıltı.
 - `js/hikaye/ses-kaynak-haftaN.js` — seslendirmelerin NatureCo galeri
   adresleri. Sesler: Tombiş `Sweet_Girl_2`, Kökçe `cute_boy`, Pırıltı
-  `Lively_Girl` (MiniMax Speech 2.8 HD).
+  `Lively_Girl`, Cingöz `Decent_Boy` (MiniMax Speech 2.8 HD).
 - `js/hikaye/haftaN.js` — sahneler. Her sahne bir işlev, bir sonraki
   sahnenin adını döndürür. Yardımcılar `js/hikaye/motor.js` içinde:
   `secim`, `sohbet`, `hareket`, `topla`, `dokunSay`, `sira`, `yakala`,
